@@ -53,6 +53,11 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
+button {
+  color: inherit;
+  font: inherit;
+}
+
 button:focus-visible,
 a:focus-visible {
   outline: 3px solid var(--orange);
@@ -1294,16 +1299,24 @@ a:focus-visible {
     gap: 6px;
     padding: 0;
     border: 0;
+    color: var(--ink);
     background: transparent;
     cursor: pointer;
+    touch-action: manipulation;
+    -webkit-appearance: none;
+    appearance: none;
   }
 
   .menu-toggle span {
     width: 25px;
     height: 3px;
     display: block;
-    background: currentColor;
+    background: var(--ink);
     transition: transform 180ms ease;
+  }
+
+  body.menu-open .menu-toggle {
+    color: var(--ink);
   }
 
   .menu-toggle[aria-expanded="true"] span:first-child {
