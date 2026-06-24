@@ -724,7 +724,7 @@ a:focus-visible {
   color: white;
   font-size: clamp(57px, 6.7vw, 96px);
   letter-spacing: 0.01em;
-  line-height: 0.9;
+  line-height: 1;
   text-transform: uppercase;
 }
 
@@ -820,6 +820,32 @@ a:focus-visible {
   line-height: 1.5;
 }
 
+.manifesto-strip {
+  padding-block: 0 clamp(82px, 9vw, 124px);
+}
+
+.manifesto-strip p {
+  margin: 0 0 14px;
+  color: var(--orange);
+  font-family: var(--label);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.manifesto-strip h2 {
+  max-width: 1120px;
+  margin: 0;
+  color: white;
+  font-family: var(--heading);
+  font-size: clamp(46px, 6.2vw, 92px);
+  font-weight: 400;
+  letter-spacing: 0.005em;
+  line-height: 1.02;
+  text-transform: uppercase;
+}
+
 .team-section {
   background: var(--cream);
 }
@@ -845,7 +871,7 @@ a:focus-visible {
   max-width: 900px;
   font-size: clamp(58px, 7.6vw, 112px);
   letter-spacing: 0.005em;
-  line-height: 0.9;
+  line-height: 1.02;
   text-transform: uppercase;
 }
 
@@ -870,6 +896,34 @@ a:focus-visible {
 
 .team-card {
   min-width: 0;
+}
+
+.team-card-lead {
+  grid-column: span 2;
+}
+
+.team-card-lead .team-photo {
+  aspect-ratio: 16 / 12;
+}
+
+.team-card-lead .team-photo img {
+  object-position: center var(--team-photo-y, 35%);
+}
+
+.team-card-santiago {
+  --team-photo-y: 35%;
+}
+
+.team-card-sergio-toledo {
+  --team-photo-y: 8%;
+}
+
+.team-card-lead h3 {
+  font-size: clamp(50px, 5.5vw, 78px);
+}
+
+.team-card-lead .team-meta {
+  max-width: 720px;
 }
 
 .team-photo {
@@ -911,7 +965,7 @@ a:focus-visible {
 
 .team-photo-sober {
   z-index: 0;
-  filter: grayscale(1) contrast(1.1) brightness(0.72);
+  filter: saturate(0.72) contrast(1.04) brightness(0.84);
   transform: scale(1.03);
 }
 
@@ -972,7 +1026,7 @@ a:focus-visible {
 }
 
 .team-meta p {
-  grid-row: span 2;
+  grid-row: span 3;
   margin: 3px 0 0;
   color: var(--orange-deep);
   font-family: var(--label);
@@ -995,6 +1049,15 @@ a:focus-visible {
   line-height: 1.35;
 }
 
+.team-meta small {
+  max-width: 360px;
+  margin-top: 11px;
+  color: rgb(88 66 53 / 78%);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
 .about-cta {
   position: relative;
   overflow: hidden;
@@ -1014,11 +1077,11 @@ a:focus-visible {
 }
 
 .about-cta h2 {
-  max-width: 930px;
+  max-width: 1110px;
   margin: 0 auto 36px;
-  font-size: clamp(68px, 9vw, 128px);
+  font-size: clamp(58px, 8.2vw, 112px);
   letter-spacing: 0.005em;
-  line-height: 0.86;
+  line-height: 0.98;
   text-transform: uppercase;
 }
 
@@ -1181,6 +1244,10 @@ a:focus-visible {
 
   .team-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .team-card-lead {
+    grid-column: span 3;
   }
 }
 
@@ -1389,6 +1456,14 @@ a:focus-visible {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .team-card-lead {
+    grid-column: span 2;
+  }
+
+  .team-card-lead .team-photo {
+    aspect-ratio: 16 / 11.5;
+  }
+
   .about-cta-inner {
     min-height: 480px;
   }
@@ -1547,6 +1622,14 @@ a:focus-visible {
     grid-template-columns: 1fr;
   }
 
+  .manifesto-strip {
+    padding-block: 0 76px;
+  }
+
+  .manifesto-strip h2 {
+    font-size: clamp(44px, 14vw, 66px);
+  }
+
   .team-section .container {
     padding-block: 68px 82px;
   }
@@ -1556,7 +1639,15 @@ a:focus-visible {
     gap: 40px;
   }
 
+  .team-card-lead {
+    grid-column: auto;
+  }
+
   .team-photo {
+    aspect-ratio: 4 / 4.75;
+  }
+
+  .team-card-lead .team-photo {
     aspect-ratio: 4 / 4.75;
   }
 
@@ -1580,6 +1671,10 @@ a:focus-visible {
 
   .team-card h3 {
     font-size: 38px;
+  }
+
+  .team-meta small {
+    max-width: none;
   }
 
   .about-cta-inner {
