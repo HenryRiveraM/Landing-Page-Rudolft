@@ -28,8 +28,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Anton&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"
       rel="stylesheet"
+    />
+    <link
+      rel="preload"
+      href="assets/Font/MonumentExtended-FreeForPersonalUse/MonumentExtended-Regular.otf"
+      as="font"
+      type="font/otf"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="assets/Font/MonumentExtended-FreeForPersonalUse/MonumentExtended-Ultrabold.otf"
+      as="font"
+      type="font/otf"
+      crossorigin
     />
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js" defer></script>
@@ -40,7 +54,7 @@
     <header class="site-header">
       <div class="container header-inner">
         <a class="brand" href="#inicio" aria-label="Rudolft, inicio">
-          RUDOLFT
+          <img src="assets/rudolft-logo-transparent.png" alt="Rudolft" width="615" height="136" />
         </a>
 
         <button
@@ -56,7 +70,7 @@
 
         <nav class="primary-navigation" id="primary-navigation" aria-label="Navegación principal">
           <div class="mobile-menu-intro" aria-hidden="true">
-            <span>Menú Rudolft</span>
+            <!-- <span>Menú Rudolft</span> -->
             <p>Estrategia, contenido y ejecución para marcas que quieren moverse con dirección.</p>
           </div>
           <a href="#portafolio">Trabajo</a>
@@ -96,10 +110,10 @@
         <div class="container hero-grid">
           <div class="hero-copy">
             <h1>
-              <span>Marketing</span>
-              <span>que piensa,</span>
-              <span>publica y</span>
-              <span>vende.</span>
+              <span>No es</span>
+              <span>Marketing para todos,</span>
+              <span>es para vos.</span>
+              <!-- <span>vende.</span> -->
             </h1>
             <p>
               Creamos estrategias creativas, contenido, campañas y presencia digital para que tu
@@ -127,6 +141,8 @@
               alt="Escritorio creativo con laptop de analítica, cámara y teléfono mostrando contenido de redes sociales"
               width="1376"
               height="768"
+              decoding="async"
+              fetchpriority="high"
             />
             <span class="floating-tag tag-strategy">Estrategia</span>
             <span class="floating-tag tag-production">Producción</span>
@@ -143,15 +159,21 @@
         <div class="container problem-grid">
           <div class="problem-image">
             <img
-              src="assets/burning-money.png"
+              src="assets/dinero quemadi.png"
               alt="Tarjeta y dinero ardiendo, representación del gasto publicitario sin estrategia"
               width="1184"
               height="864"
               loading="lazy"
+              decoding="async"
             />
           </div>
           <div class="problem-copy">
-            <h2>Publicar por publicar es <span>quemar plata</span>.</h2>
+            <h2>
+              Publicar por publicar es
+              <span class="problem-title-image">
+                <img src="assets/QUEMAR PLATA.png" alt="quemar plata" width="1160" height="320" loading="lazy" decoding="async" />
+              </span>
+            </h2>
             <p>
               Tu empresa no necesita subir contenido al azar. Necesita saber qué decir, a quién
               hablarle, cómo diferenciarse y qué acción quiere provocar.
@@ -234,15 +256,15 @@
           <div class="services-grid">
             <article class="service-card service-strategy">
               <svg class="service-icon" aria-hidden="true" viewBox="0 0 32 32">
-                <path d="M6 7h7v7H6zM19 7h7v7h-7zM13 21h7v7h-7zM9.5 14v3.5H16V21m6.5-7v3.5H16" />
+                <path d="M6 7h7v7H6zM19 7h7v7h-7zM13 21h7v7h-7zM9.5 14v3.5H16V21m6.5-7v3.5H16"  />
               </svg>
               <div>
-                <h3>Estrategia de marketing</h3>
-                <p>El mapa antes del viaje.</p>
+                <h3>Manejo de Redes Sociales</h3>
+                <p>Contenido con estrategia, no publicaciones al azar.</p>
                 <ul>
-                  <li>Diagnóstico de marca</li>
-                  <li>Objetivos y mensaje</li>
-                  <li>Plan de acción mensual</li>
+                  <li>Diseño Gráfico</li>
+                  <li>Estrategia de Marketing</li>
+                  <li>Producción Audiovisual</li>
                 </ul>
               </div>
             </article>
@@ -266,15 +288,15 @@
 
             <article class="service-card service-social">
               <svg class="service-icon" aria-hidden="true" viewBox="0 0 32 32">
-                <path d="M6 12h14v11H6zM11 7h15v11h-6M10 16h6M10 20h4" />
+                <path d="M5 8h22v16H5zM5 13h22M10 18h6M10 21h10"  />
               </svg>
               <div>
-                <h3>Redes sociales</h3>
-                <p>Gestión estratégica.</p>
+                <h3>Páginas web</h3>
+                <p>Sitios rápidos, claros y pensados para convertir.</p>
                 <ul>
-                  <li>Calendario de contenido</li>
-                  <li>Copywriting</li>
-                  <li>Optimización continua</li>
+                  <li>Landing pages</li>
+                  <li>Sitios corporativos</li>
+                  <li>Desarrollo web responsive</li>
                 </ul>
               </div>
             </article>
@@ -308,23 +330,6 @@
                 </ul>
               </div>
             </article>
-
-            <article class="service-card service-web">
-              <svg class="service-icon" aria-hidden="true" viewBox="0 0 32 32">
-                <path d="M5 8h22v16H5zM5 13h22M10 18h6M10 21h10" />
-                <circle cx="9" cy="10.5" r=".6" />
-                <circle cx="12" cy="10.5" r=".6" />
-              </svg>
-              <div>
-                <h3>Páginas web</h3>
-                <p>Sitios rápidos, claros y pensados para convertir.</p>
-                <ul>
-                  <li>Landing pages</li>
-                  <li>Sitios corporativos</li>
-                  <li>Desarrollo web responsive</li>
-                </ul>
-              </div>
-            </article>
           </div>
         </div>
       </section>
@@ -333,34 +338,46 @@
         <div class="container">
           <div class="portfolio-heading">
             <p class="section-kicker">Trabajo con dirección</p>
-            <h2>Portafolio que no adorna. <span>Mueve la aguja.</span></h2>
+            <h2>Contenido que conecta,<span>comunica y genera resultados.</span></h2>
             <p>
-              Tres formas de entrarle a una marca: ordenamos la estrategia, producimos contenido y
-              medimos para que cada siguiente paso tenga más intención.
+              Antes de crear, entendemos dónde está la marca, qué necesita comunicar
+              y cómo podemos hacer que cada acción tenga una intención clara.
             </p>
           </div>
 
           <div class="portfolio-grid">
             <article class="portfolio-card portfolio-card-dark">
               <p>01 / Estrategia</p>
-              <h3>Marca con norte claro</h3>
+              <h3>
+                <span>QUÉ DECIR</span>
+                <span>A QUIÉN HABLARLE</span>
+                <span>Y CÓMO VENDER</span>
+              </h3>
               <span>Diagnóstico · Mensaje · Ruta comercial</span>
             </article>
             <article class="portfolio-card">
               <p>02 / Contenido</p>
-              <h3>Ideas que se entienden rápido</h3>
+              <h3>
+                <span>TU MARCA</span>
+                <span>MEJOR</span>
+                <span>PRODUCIDA</span>
+              </h3>
               <span>Guiones · Producción · Edición</span>
             </article>
             <article class="portfolio-card portfolio-card-orange">
               <p>03 / Pauta</p>
-              <h3>Campañas que aprenden</h3>
+              <h3>
+                <span>ANUNCIOS QUE</span>
+                <span>NO QUEMAN</span>
+                <span>PRESUPUESTO</span>
+              </h3>
               <span>Meta Ads · TikTok Ads · Reporte</span>
             </article>
           </div>
 
           <div class="proof-strip" aria-label="Prueba social">
             <span>Para marcas que necesitan dejar de improvisar.</span>
-            <span>Strategy meets chaos.</span>
+            <!-- <span>Strategy meets chaos.</span> -->
             <span>Bolivia</span>
           </div>
         </div>
@@ -406,7 +423,9 @@
     <footer class="site-footer">
       <div class="container footer-grid">
         <div class="footer-brand">
-          <a class="footer-logo" href="#inicio">Rudolft</a>
+          <a class="footer-logo" href="#inicio" aria-label="Rudolft, inicio">
+            <img src="assets/rudolft-logo-transparent.png" alt="Rudolft" width="615" height="136" />
+          </a>
           <p>Creatividad con estrategia. Agencia de marketing<br />en Bolivia.</p>
           <small>© 2026 Rudolft. Strategy meets chaos.</small>
         </div>
