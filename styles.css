@@ -1,3 +1,21 @@
+@font-face {
+  font-family: "Monument Extended";
+  src: url("assets/Font/MonumentExtended-FreeForPersonalUse/MonumentExtended-Regular.otf")
+    format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Monument Extended";
+  src: url("assets/Font/MonumentExtended-FreeForPersonalUse/MonumentExtended-Ultrabold.otf")
+    format("opentype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --cream: #fef9f1;
   --soft: #f8f3eb;
@@ -13,9 +31,11 @@
   --red: #c3231d;
   --container: 1440px;
   --gutter: clamp(24px, 4.5vw, 64px);
-  --heading: "Anton", "Arial Narrow", Impact, sans-serif;
-  --body: "Plus Jakarta Sans", Arial, sans-serif;
-  --label: "Space Grotesk", Arial, sans-serif;
+  --brand-font: "Monument Extended", "Arial Black", Impact, sans-serif;
+  --text-font: "Montserrat", Arial, sans-serif;
+  --heading: var(--brand-font);
+  --body: var(--text-font);
+  --label: var(--text-font);
 }
 
 * {
@@ -31,7 +51,9 @@ body {
   background: var(--cream);
   color: var(--ink);
   font-family: var(--body);
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
 }
 
 body.menu-open {
@@ -104,11 +126,16 @@ a:focus-visible {
 
 .brand {
   justify-self: start;
-  font-family: var(--heading);
-  font-size: clamp(22px, 2.1vw, 32px);
-  letter-spacing: -0.02em;
-  line-height: 1;
-  text-transform: uppercase;
+  width: clamp(118px, 10vw, 164px);
+  display: block;
+}
+
+.brand img,
+.footer-logo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
 }
 
 .primary-navigation {
@@ -121,7 +148,7 @@ a:focus-visible {
 .footer-links a {
   font-family: var(--label);
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   transition: color 180ms ease;
@@ -165,7 +192,7 @@ a:focus-visible {
   border-radius: 0;
   font-family: var(--label);
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.1em;
   line-height: 1;
   text-transform: uppercase;
@@ -238,7 +265,7 @@ a:focus-visible {
   color: var(--orange);
   font-family: var(--label);
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.14em;
   line-height: 1;
   text-transform: uppercase;
@@ -261,6 +288,7 @@ a:focus-visible {
 .hero-copy {
   position: relative;
   z-index: 2;
+  min-width: 0;
 }
 
 .hero h1,
@@ -279,14 +307,15 @@ a:focus-visible {
 .about-cta h2 {
   margin: 0;
   font-family: var(--heading);
-  font-weight: 400;
+  font-weight: 800;
 }
 
 .hero h1 {
   max-width: 650px;
   font-size: clamp(72px, 8.2vw, 120px);
-  letter-spacing: 0.01em;
-  line-height: 0.86;
+  letter-spacing: -0.015em;
+  line-height: 0.96;
+  text-wrap: balance;
 }
 
 .hero h1 span {
@@ -298,7 +327,7 @@ a:focus-visible {
   margin: 30px 0 32px;
   color: var(--brown);
   font-size: clamp(16px, 1.35vw, 20px);
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.55;
 }
 
@@ -332,7 +361,7 @@ a:focus-visible {
   box-shadow: 0 8px 16px rgb(29 28 23 / 10%);
   font-family: var(--label);
   font-size: 10px;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -401,13 +430,26 @@ a:focus-visible {
 .problem h2 {
   max-width: 680px;
   font-size: clamp(54px, 6.15vw, 84px);
-  letter-spacing: 0.01em;
-  line-height: 0.96;
+  letter-spacing: -0.01em;
+  line-height: 1.02;
+  text-wrap: balance;
 }
 
 .problem h2 span,
 .closing h2 span {
   color: var(--orange);
+}
+
+.problem-title-image {
+  width: min(100%, 620px);
+  display: block;
+  margin-top: 8px;
+}
+
+.problem-title-image img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 .problem-copy p {
@@ -418,6 +460,22 @@ a:focus-visible {
   color: var(--brown);
   font-size: clamp(16px, 1.35vw, 20px);
   line-height: 1.55;
+}
+
+.problem-copy,
+.portfolio-heading,
+.portfolio-card,
+.closing-inner,
+.about-cta-inner,
+.team-card,
+.service-card,
+.about-hero-inner,
+.purpose-title,
+.purpose-copy,
+.purpose-cards,
+.manifesto-strip,
+.team-heading {
+  min-width: 0;
 }
 
 .method {
@@ -434,7 +492,8 @@ a:focus-visible {
   margin-bottom: 54px;
   text-align: center;
   font-size: clamp(34px, 3.3vw, 48px);
-  line-height: 1.03;
+  line-height: 1.08;
+  text-wrap: balance;
 }
 
 .comparison-grid {
@@ -534,12 +593,11 @@ a:focus-visible {
 }
 
 .services {
-  min-height: 690px;
   background: var(--paper);
 }
 
 .services .container {
-  padding-block: 82px 92px;
+  padding-block: 82px 62px;
 }
 
 .services-title {
@@ -551,7 +609,7 @@ a:focus-visible {
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, minmax(245px, auto));
+  grid-auto-rows: minmax(245px, auto);
   gap: 12px;
 }
 
@@ -584,7 +642,8 @@ a:focus-visible {
 .service-card h3 {
   margin-bottom: 6px;
   font-size: clamp(31px, 3vw, 43px);
-  line-height: 0.98;
+  line-height: 1.05;
+  text-wrap: balance;
 }
 
 .service-card p {
@@ -605,7 +664,7 @@ a:focus-visible {
   position: relative;
   padding-left: 14px;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1.35;
 }
 
@@ -692,7 +751,7 @@ a:focus-visible {
 }
 
 .portfolio .container {
-  padding-block: clamp(78px, 9vw, 122px);
+  padding-block: clamp(58px, 7vw, 96px) clamp(78px, 9vw, 122px);
 }
 
 .portfolio-heading {
@@ -712,11 +771,15 @@ a:focus-visible {
   max-width: 960px;
   margin: 0;
   font-family: var(--heading);
-  font-size: clamp(58px, 7.4vw, 108px);
-  font-weight: 400;
-  letter-spacing: 0.005em;
-  line-height: 0.9;
+  font-size: clamp(50px, 6.4vw, 92px);
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  line-height: 1;
   text-transform: uppercase;
+  text-wrap: balance;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: manual;
 }
 
 .portfolio-heading h2 span {
@@ -727,7 +790,7 @@ a:focus-visible {
   margin: 0;
   color: var(--brown);
   font-size: clamp(15px, 1.25vw, 18px);
-  font-weight: 600;
+  font-weight: 400;
   line-height: 1.6;
 }
 
@@ -764,7 +827,7 @@ a:focus-visible {
   margin: 0;
   font-family: var(--label);
   font-size: 11px;
-  font-weight: 800;
+  font-weight: 500;
   letter-spacing: 0.12em;
   line-height: 1.35;
   text-transform: uppercase;
@@ -775,13 +838,27 @@ a:focus-visible {
 }
 
 .portfolio-card h3 {
-  max-width: 380px;
+  max-width: 100%;
   margin: 0;
   font-family: var(--heading);
-  font-size: clamp(44px, 4.8vw, 68px);
-  font-weight: 400;
-  line-height: 0.95;
+  font-size: clamp(26px, 2.2vw, 36px);
+  font-weight: 800;
+  line-height: 1.08;
   text-transform: uppercase;
+  text-wrap: unset;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.portfolio-card h3 span {
+  display: block;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  text-transform: inherit;
 }
 
 .portfolio-card span {
@@ -821,7 +898,7 @@ a:focus-visible {
   color: rgb(29 28 23 / 64%);
   font-family: var(--label);
   font-size: 11px;
-  font-weight: 800;
+  font-weight: 500;
   letter-spacing: 0.12em;
   line-height: 1.3;
   text-transform: uppercase;
@@ -853,9 +930,13 @@ a:focus-visible {
 .about-hero h1 {
   max-width: 960px;
   font-size: clamp(72px, 9.2vw, 132px);
-  letter-spacing: 0.005em;
-  line-height: 0.88;
+  letter-spacing: -0.018em;
+  line-height: 0.98;
   text-transform: uppercase;
+  text-wrap: balance;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: manual;
 }
 
 .about-hero h1 span {
@@ -868,7 +949,7 @@ a:focus-visible {
   margin: 28px 0 0;
   color: var(--brown);
   font-size: clamp(16px, 1.25vw, 19px);
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.65;
 }
 
@@ -882,7 +963,7 @@ a:focus-visible {
   color: var(--orange-deep);
   font-family: var(--label);
   font-size: 10px;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -924,8 +1005,8 @@ a:focus-visible {
 
 .purpose-grid {
   display: grid;
-  grid-template-columns: minmax(270px, 0.85fr) minmax(0, 1.22fr);
-  gap: clamp(58px, 10vw, 150px);
+  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
+  gap: clamp(72px, 11vw, 170px);
   padding-block: clamp(92px, 12vw, 150px);
 }
 
@@ -934,12 +1015,16 @@ a:focus-visible {
 }
 
 .purpose-title h2 {
-  max-width: 430px;
+  max-width: 380px;
   color: white;
-  font-size: clamp(57px, 6.7vw, 96px);
-  letter-spacing: 0.01em;
-  line-height: 1;
+  font-size: clamp(38px, 3.8vw, 58px);
+  letter-spacing: -0.01em;
+  line-height: 1.06;
   text-transform: uppercase;
+  text-wrap: balance;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: manual;
 }
 
 .purpose-title h2 span {
@@ -979,8 +1064,8 @@ a:focus-visible {
   border-left: 4px solid var(--orange);
   color: var(--orange);
   font-family: var(--heading);
-  font-size: clamp(30px, 3.3vw, 48px);
-  line-height: 0.95;
+  font-size: clamp(24px, 2.35vw, 34px);
+  line-height: 1.06;
   text-transform: uppercase;
 }
 
@@ -1043,7 +1128,7 @@ a:focus-visible {
   color: var(--orange);
   font-family: var(--label);
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
@@ -1053,11 +1138,15 @@ a:focus-visible {
   margin: 0;
   color: white;
   font-family: var(--heading);
-  font-size: clamp(46px, 6.2vw, 92px);
-  font-weight: 400;
-  letter-spacing: 0.005em;
-  line-height: 1.02;
+  font-size: clamp(40px, 5.4vw, 78px);
+  font-weight: 800;
+  letter-spacing: -0.012em;
+  line-height: 1.08;
   text-transform: uppercase;
+  text-wrap: balance;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: manual;
 }
 
 .team-section {
@@ -1082,11 +1171,20 @@ a:focus-visible {
 }
 
 .team-heading h2 {
+  width: 100%;
   max-width: 900px;
-  font-size: clamp(58px, 7.6vw, 112px);
-  letter-spacing: 0.005em;
-  line-height: 1.02;
+  font-size: clamp(50px, 6.5vw, 96px);
+  letter-spacing: -0.015em;
+  line-height: 1.06;
   text-transform: uppercase;
+  text-wrap: balance;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: manual;
+}
+
+.team-heading .section-kicker {
+  max-width: 100%;
 }
 
 .team-heading h2 span {
@@ -1098,7 +1196,7 @@ a:focus-visible {
   margin: 0;
   color: var(--brown);
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.65;
 }
 
@@ -1125,15 +1223,32 @@ a:focus-visible {
 }
 
 .team-card-santiago {
-  --team-photo-y: 35%;
+  --team-photo-y: 18%;
+  --team-sober-scale: 1.15;
+  --team-hover-rest-scale: 1.18;
+  --team-hover-scale: 1.13;
 }
 
 .team-card-sergio-toledo {
   --team-photo-y: 8%;
 }
 
+.team-card-lucas-zelada {
+  --team-hover-rest-scale: 1.16;
+  --team-hover-scale: 1.14;
+}
+
+.team-card-lucas-maceda {
+  --team-hover-rest-scale: 1.42;
+  --team-hover-scale: 1.38;
+}
+
+.team-card-lucas-maceda .team-photo-hover {
+  object-position: center 20%;
+}
+
 .team-card-lead h3 {
-  font-size: clamp(50px, 5.5vw, 78px);
+  font-size: clamp(34px, 3.4vw, 50px);
 }
 
 .team-card-lead .team-meta {
@@ -1170,7 +1285,7 @@ a:focus-visible {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center var(--team-photo-y, top);
   transition:
     opacity 240ms ease,
     filter 240ms ease,
@@ -1180,14 +1295,14 @@ a:focus-visible {
 .team-photo-sober {
   z-index: 0;
   filter: saturate(0.72) contrast(1.04) brightness(0.84);
-  transform: scale(1.03);
+  transform: scale(var(--team-sober-scale, 1.03));
 }
 
 .team-photo-hover {
   z-index: 1;
   opacity: 0;
   filter: saturate(1.08) contrast(1.03);
-  transform: scale(1.08);
+  transform: scale(var(--team-hover-rest-scale, 1.08));
 }
 
 .team-role-tag {
@@ -1202,7 +1317,7 @@ a:focus-visible {
   color: var(--ink);
   font-family: var(--label);
   font-size: 10px;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.1em;
   line-height: 1;
   text-transform: uppercase;
@@ -1219,12 +1334,12 @@ a:focus-visible {
 
 .team-card:hover .team-photo-sober {
   opacity: 0;
-  transform: scale(1.08);
+  transform: scale(var(--team-sober-hover-scale, 1.08));
 }
 
 .team-card:hover .team-photo-hover {
   opacity: 1;
-  transform: scale(1.02);
+  transform: scale(var(--team-hover-scale, 1.06));
 }
 
 .team-card:hover .team-role-tag {
@@ -1245,21 +1360,24 @@ a:focus-visible {
   color: var(--orange-deep);
   font-family: var(--label);
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.12em;
 }
 
 .team-card h3 {
-  font-size: clamp(32px, 3.2vw, 46px);
-  line-height: 0.95;
+  font-size: clamp(23px, 2.05vw, 31px);
+  line-height: 1.05;
   text-transform: uppercase;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: manual;
 }
 
 .team-meta span {
   margin-top: 7px;
   color: var(--brown);
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 1.35;
 }
 
@@ -1268,8 +1386,321 @@ a:focus-visible {
   margin-top: 11px;
   color: rgb(88 66 53 / 78%);
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.55;
+}
+
+.team-day-cta {
+  position: relative;
+  isolation: isolate;
+  max-width: 760px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(18px, 3vw, 36px);
+  margin: clamp(38px, 4.5vw, 56px) auto 0;
+  padding: clamp(20px, 2.4vw, 26px);
+  overflow: hidden;
+  border: 1px solid rgb(29 28 23 / 12%);
+  border-radius: 14px;
+  background:
+    radial-gradient(circle at 4% 10%, rgb(255 118 0 / 22%), transparent 34%),
+    linear-gradient(135deg, #302e29 0%, var(--charcoal) 72%);
+  box-shadow: 0 18px 38px rgb(29 28 23 / 10%);
+}
+
+.team-day-cta::before {
+  content: "✦";
+  position: absolute;
+  top: 22px;
+  right: clamp(18px, 4vw, 48px);
+  z-index: -1;
+  color: var(--orange);
+  font-family: var(--heading);
+  font-size: clamp(48px, 7vw, 86px);
+  line-height: 1;
+  opacity: 0.13;
+  transform: rotate(-10deg);
+}
+
+.team-day-cta span {
+  display: block;
+  margin-bottom: 9px;
+  color: var(--orange);
+  font-family: var(--label);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.team-day-cta p {
+  max-width: 360px;
+  margin: 0;
+  color: white;
+  font-family: var(--heading);
+  font-size: clamp(21px, 2.1vw, 29px);
+  font-weight: 800;
+  letter-spacing: -0.012em;
+  line-height: 1.04;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.team-day-cta .button {
+  min-width: 172px;
+  min-height: 50px;
+  padding-inline: 20px;
+  justify-content: space-between;
+  box-shadow: 0 14px 28px rgb(0 0 0 / 16%);
+}
+
+.day-hero {
+  overflow: hidden;
+}
+
+.day-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.04fr) minmax(340px, 0.82fr);
+  gap: clamp(44px, 6vw, 92px);
+  align-items: center;
+  padding-block: clamp(80px, 10vw, 138px);
+}
+
+.day-hero-copy {
+  min-width: 0;
+}
+
+.day-hero h1 {
+  max-width: 780px;
+  margin: 0;
+  font-family: var(--heading);
+  font-size: clamp(46px, 5.8vw, 86px);
+  font-weight: 800;
+  letter-spacing: -0.018em;
+  line-height: 1.04;
+  text-transform: uppercase;
+  text-wrap: balance;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: manual;
+}
+
+.day-hero h1 span {
+  display: block;
+  color: var(--orange);
+}
+
+.day-hero-copy > p:not(.section-kicker) {
+  max-width: 680px;
+  margin: 28px 0 34px;
+  color: var(--brown);
+  font-size: clamp(16px, 1.35vw, 20px);
+  line-height: 1.62;
+}
+
+.day-hero-photo {
+  position: relative;
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 16px;
+  background: var(--charcoal);
+  box-shadow: 0 26px 54px rgb(29 28 23 / 14%);
+  transform: rotate(1.2deg);
+}
+
+.day-hero-photo img {
+  width: 100%;
+  height: min(54vw, 590px);
+  display: block;
+  object-fit: cover;
+  filter: saturate(1.04) contrast(1.02);
+}
+
+.day-hero-photo figcaption {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  padding: 10px 13px;
+  background: var(--orange);
+  color: var(--ink);
+  font-family: var(--label);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  text-transform: uppercase;
+  transform: rotate(-2deg);
+}
+
+.day-proof {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  padding-bottom: clamp(56px, 7vw, 92px);
+}
+
+.day-proof span {
+  min-height: 86px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgb(29 28 23 / 12%);
+  border-radius: 12px;
+  background: rgb(255 255 255 / 42%);
+  color: var(--brown);
+  font-family: var(--label);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.13em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.day-gallery-section {
+  background: var(--cream);
+}
+
+.day-gallery-section .container {
+  padding-block: clamp(88px, 10vw, 136px);
+}
+
+.day-gallery-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.42fr);
+  gap: clamp(30px, 6vw, 82px);
+  align-items: end;
+  margin-bottom: clamp(42px, 6vw, 78px);
+}
+
+.day-gallery-heading .section-kicker {
+  grid-column: 1 / -1;
+  margin-bottom: -12px;
+}
+
+.day-gallery-heading h2 {
+  max-width: 980px;
+  margin: 0;
+  font-family: var(--heading);
+  font-size: clamp(44px, 6vw, 88px);
+  font-weight: 800;
+  letter-spacing: -0.014em;
+  line-height: 1.06;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.day-gallery-heading > p:not(.section-kicker) {
+  margin: 0;
+  color: var(--brown);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.day-gallery {
+  display: grid;
+  grid-auto-flow: dense;
+  grid-auto-rows: 160px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.day-card {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  grid-row: span 2;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--stone);
+  box-shadow: 0 18px 34px rgb(29 28 23 / 7%);
+}
+
+.day-card-wide {
+  grid-column: span 2;
+}
+
+.day-card-tall {
+  grid-row: span 3;
+}
+
+.day-card img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition:
+    filter 220ms ease,
+    transform 220ms ease;
+}
+
+.day-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 45%, rgb(29 28 23 / 64%));
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.day-card:hover img {
+  filter: saturate(1.08) contrast(1.05);
+  transform: scale(1.035);
+}
+
+.day-card figcaption {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  z-index: 1;
+  color: white;
+  font-family: var(--label);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.day-card-orange {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(24px, 3vw, 38px);
+  background: var(--orange);
+  color: var(--ink);
+}
+
+.day-card-orange::after {
+  content: none;
+}
+
+.day-card-orange p {
+  margin: 0;
+  font-family: var(--label);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.day-card-orange h3 {
+  max-width: 420px;
+  margin: 0;
+  font-family: var(--heading);
+  font-size: clamp(26px, 2.5vw, 36px);
+  font-weight: 800;
+  line-height: 1.12;
+  text-transform: uppercase;
+  text-wrap: balance;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: manual;
+}
+
+.day-cta .about-cta-inner {
+  min-height: 480px;
 }
 
 .about-cta {
@@ -1293,10 +1724,11 @@ a:focus-visible {
 .about-cta h2 {
   max-width: 1110px;
   margin: 0 auto 36px;
-  font-size: clamp(58px, 8.2vw, 112px);
-  letter-spacing: 0.005em;
-  line-height: 0.98;
+  font-size: clamp(48px, 6.9vw, 96px);
+  letter-spacing: -0.012em;
+  line-height: 1.04;
   text-transform: uppercase;
+  text-wrap: balance;
 }
 
 .about-cta h2 span {
@@ -1322,8 +1754,12 @@ a:focus-visible {
 
 .closing h2 {
   margin-inline: auto;
-  font-size: clamp(67px, 8.8vw, 118px);
-  line-height: 0.86;
+  font-size: clamp(58px, 7.8vw, 104px);
+  line-height: 0.98;
+  text-wrap: balance;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: manual;
 }
 
 .closing-buttons {
@@ -1368,10 +1804,9 @@ a:focus-visible {
 }
 
 .footer-logo {
-  font-size: clamp(51px, 5.6vw, 76px);
-  letter-spacing: -0.01em;
-  line-height: 1;
-  text-transform: uppercase;
+  width: clamp(150px, 14vw, 230px);
+  display: block;
+  filter: invert(1);
 }
 
 .footer-brand p {
@@ -1413,7 +1848,7 @@ a:focus-visible {
   color: rgb(255 255 255 / 55%);
   font-family: var(--label);
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -1436,7 +1871,7 @@ a:focus-visible {
   }
 
   .hero h1 {
-    font-size: 86px;
+    font-size: 78px;
   }
 
   .hero-copy > p {
@@ -1452,8 +1887,8 @@ a:focus-visible {
   }
 
   .purpose-grid {
-    grid-template-columns: minmax(260px, 0.7fr) minmax(0, 1fr);
-    gap: 68px;
+    grid-template-columns: minmax(240px, 0.64fr) minmax(0, 1fr);
+    gap: 76px;
   }
 
   .team-grid {
@@ -1587,7 +2022,7 @@ a:focus-visible {
   .mobile-menu-foot span {
     font-family: var(--label);
     font-size: 11px;
-    font-weight: 800;
+    font-weight: 500;
     letter-spacing: 0.14em;
     line-height: 1.2;
     text-transform: uppercase;
@@ -1598,7 +2033,7 @@ a:focus-visible {
     margin: 0;
     color: rgb(29 28 23 / 76%);
     font-size: 13px;
-    font-weight: 700;
+    font-weight: 500;
     line-height: 1.45;
   }
 
@@ -1612,9 +2047,9 @@ a:focus-visible {
     color: var(--ink);
     font-family: var(--heading);
     font-size: clamp(40px, 12vw, 58px);
-    font-weight: 400;
+    font-weight: 800;
     letter-spacing: 0;
-    line-height: 0.94;
+    line-height: 1.02;
     transition:
       background-color 180ms ease,
       transform 180ms ease;
@@ -1627,7 +2062,7 @@ a:focus-visible {
     color: rgb(29 28 23 / 54%);
     font-family: var(--label);
     font-size: 11px;
-    font-weight: 800;
+    font-weight: 500;
     letter-spacing: 0.08em;
   }
 
@@ -1637,7 +2072,7 @@ a:focus-visible {
     color: rgb(29 28 23 / 58%);
     font-family: var(--label);
     font-size: 20px;
-    font-weight: 800;
+    font-weight: 500;
     transform: translateX(-4px);
     transition: transform 180ms ease;
   }
@@ -1665,7 +2100,7 @@ a:focus-visible {
     color: white;
     font-family: var(--label);
     font-size: 12px;
-    font-weight: 800;
+    font-weight: 500;
     letter-spacing: 0.12em;
     line-height: 1;
     text-transform: uppercase;
@@ -1711,7 +2146,7 @@ a:focus-visible {
 
   .hero h1 {
     max-width: 600px;
-    font-size: clamp(62px, 15vw, 98px);
+    font-size: clamp(50px, 12vw, 76px);
   }
 
   .hero-copy > p {
@@ -1732,7 +2167,11 @@ a:focus-visible {
   }
 
   .tag-production {
-    right: -3%;
+    right: 0;
+  }
+
+  .tag-content {
+    right: 0;
   }
 
   .problem-grid {
@@ -1763,7 +2202,7 @@ a:focus-visible {
 
   .services-grid {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(4, minmax(235px, auto));
+    grid-auto-rows: minmax(235px, auto);
   }
 
   .service-strategy {
@@ -1781,6 +2220,7 @@ a:focus-visible {
 
   .portfolio-card {
     min-height: 280px;
+    width: 100%;
   }
 
   .proof-strip {
@@ -1804,7 +2244,7 @@ a:focus-visible {
     box-shadow: 0 18px 36px rgb(29 28 23 / 18%);
     font-family: var(--label);
     font-size: 11px;
-    font-weight: 800;
+    font-weight: 500;
     letter-spacing: 0.12em;
     line-height: 1;
     text-transform: uppercase;
@@ -1825,7 +2265,7 @@ a:focus-visible {
   }
 
   .closing h2 {
-    font-size: clamp(66px, 13vw, 95px);
+    font-size: clamp(50px, 10vw, 74px);
   }
 
   .about-hero {
@@ -1837,7 +2277,7 @@ a:focus-visible {
   }
 
   .about-hero h1 {
-    font-size: clamp(66px, 15vw, 106px);
+    font-size: clamp(40px, 9vw, 66px);
   }
 
   .purpose-grid {
@@ -1848,6 +2288,7 @@ a:focus-visible {
 
   .purpose-title h2 {
     max-width: 720px;
+    font-size: clamp(34px, 7.5vw, 54px);
   }
 
   .purpose-copy {
@@ -1867,6 +2308,39 @@ a:focus-visible {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .team-day-cta {
+    align-items: flex-start;
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+
+  .day-hero-grid,
+  .day-gallery-heading {
+    grid-template-columns: 1fr;
+  }
+
+  .day-hero-grid {
+    padding-block: 64px 78px;
+  }
+
+  .day-hero h1 {
+    max-width: 720px;
+    font-size: clamp(42px, 8vw, 66px);
+  }
+
+  .day-hero-photo img {
+    height: min(86vw, 560px);
+  }
+
+  .day-proof {
+    grid-template-columns: 1fr;
+  }
+
+  .day-gallery {
+    grid-auto-rows: 150px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .team-card-lead {
     grid-column: span 2;
   }
@@ -1880,7 +2354,7 @@ a:focus-visible {
   }
 
   .about-cta h2 {
-    font-size: clamp(64px, 13vw, 96px);
+    font-size: clamp(40px, 9vw, 68px);
   }
 }
 
@@ -1890,11 +2364,11 @@ a:focus-visible {
   }
 
   .hero h1 {
-    font-size: clamp(58px, 18vw, 82px);
+    font-size: clamp(42px, 12vw, 58px);
   }
 
   .hero h1 span {
-    display: inline;
+    display: block;
   }
 
   .button-row,
@@ -1916,7 +2390,7 @@ a:focus-visible {
   }
 
   .problem h2 {
-    font-size: clamp(51px, 15vw, 68px);
+    font-size: clamp(44px, 13vw, 62px);
   }
 
   .method .container,
@@ -1945,7 +2419,7 @@ a:focus-visible {
 
   .services-title {
     margin-bottom: 36px;
-    font-size: 68px;
+    font-size: clamp(48px, 14vw, 64px);
   }
 
   .services-grid {
@@ -1989,7 +2463,7 @@ a:focus-visible {
   }
 
   .portfolio-heading h2 {
-    font-size: clamp(52px, 15vw, 74px);
+    font-size: clamp(32px, 9vw, 46px);
   }
 
   .portfolio-card {
@@ -1997,11 +2471,11 @@ a:focus-visible {
   }
 
   .portfolio-card h3 {
-    font-size: clamp(42px, 13vw, 62px);
+    font-size: clamp(27px, 7vw, 36px);
   }
 
   .closing h2 {
-    font-size: clamp(58px, 17vw, 82px);
+    font-size: clamp(32px, 9vw, 48px);
   }
 
   .closing h2 br {
@@ -2015,7 +2489,7 @@ a:focus-visible {
   }
 
   .footer-logo {
-    font-size: 52px;
+    width: 180px;
   }
 
   .footer-brand small {
@@ -2039,7 +2513,7 @@ a:focus-visible {
   }
 
   .about-hero h1 {
-    font-size: clamp(58px, 18vw, 82px);
+    font-size: clamp(31px, 8vw, 43px);
   }
 
   .about-hero-inner > p:not(.section-kicker) {
@@ -2050,14 +2524,17 @@ a:focus-visible {
     margin-top: 44px;
   }
 
-  .purpose-title h2,
   .team-heading h2 {
-    font-size: clamp(52px, 16vw, 74px);
+    font-size: clamp(28px, 7.4vw, 38px);
+  }
+
+  .purpose-title h2 {
+    font-size: clamp(25px, 6.3vw, 34px);
   }
 
   .purpose-copy blockquote {
     margin-block: 34px 28px;
-    font-size: 34px;
+    font-size: 28px;
   }
 
   .purpose-cards {
@@ -2069,7 +2546,7 @@ a:focus-visible {
   }
 
   .manifesto-strip h2 {
-    font-size: clamp(44px, 14vw, 66px);
+    font-size: clamp(27px, 7vw, 36px);
   }
 
   .team-section .container {
@@ -2079,6 +2556,84 @@ a:focus-visible {
   .team-grid {
     grid-template-columns: 1fr;
     gap: 40px;
+  }
+
+  .team-day-cta {
+    width: 100%;
+  }
+
+  .team-day-cta .button {
+    width: auto;
+  }
+
+  .team-day-cta {
+    min-height: auto;
+    gap: 14px;
+    padding: 20px 18px;
+  }
+
+  .team-day-cta p {
+    font-size: clamp(21px, 6.2vw, 27px);
+  }
+
+  .team-day-cta::before {
+    top: auto;
+    right: 12px;
+    bottom: -16px;
+    font-size: 76px;
+  }
+
+  .day-hero h1 {
+    font-size: clamp(32px, 8.2vw, 43px);
+  }
+
+  .day-hero-copy > p:not(.section-kicker) {
+    font-size: 16px;
+  }
+
+  .day-hero-photo {
+    border-radius: 12px;
+    transform: none;
+  }
+
+  .day-proof span {
+    min-height: 68px;
+  }
+
+  .day-gallery-section .container {
+    padding-block: 68px 82px;
+  }
+
+  .day-gallery-heading {
+    margin-bottom: 34px;
+  }
+
+  .day-gallery-heading .section-kicker {
+    margin-bottom: 0;
+  }
+
+  .day-gallery-heading h2 {
+    font-size: clamp(30px, 8vw, 42px);
+  }
+
+  .day-gallery {
+    grid-auto-rows: 210px;
+    grid-template-columns: 1fr;
+  }
+
+  .day-card,
+  .day-card-wide,
+  .day-card-tall {
+    grid-column: auto;
+    grid-row: span 1;
+  }
+
+  .day-card-tall {
+    min-height: 360px;
+  }
+
+  .day-card-orange h3 {
+    font-size: clamp(25px, 7vw, 32px);
   }
 
   .team-card-lead {
@@ -2112,7 +2667,7 @@ a:focus-visible {
   }
 
   .team-card h3 {
-    font-size: 38px;
+    font-size: clamp(25px, 7vw, 30px);
   }
 
   .team-meta small {
@@ -2125,7 +2680,7 @@ a:focus-visible {
   }
 
   .about-cta h2 {
-    font-size: clamp(57px, 17vw, 82px);
+    font-size: clamp(30px, 8.2vw, 44px);
   }
 }
 
