@@ -2,6 +2,8 @@ const menuButton = document.querySelector(".menu-toggle");
 const navigation = document.querySelector(".primary-navigation");
 let lastFocusedElement = null;
 
+document.documentElement.classList.add("js-enabled");
+
 function getFocusableMenuItems() {
   return navigation.querySelectorAll("a[href], button:not([disabled])");
 }
@@ -69,3 +71,59 @@ document.addEventListener("keydown", (event) => {
     firstItem.focus();
   }
 });
+
+const revealTargets = document.querySelectorAll(
+  [
+    ".hero-copy",
+    ".hero-visual",
+    ".problem-image",
+    ".problem-copy",
+    ".comparison-card",
+    ".service-card",
+    ".portfolio-heading",
+    ".portfolio-card",
+    ".closing-inner",
+    ".purpose-title",
+    ".purpose-copy",
+    ".purpose-card",
+    ".team-heading",
+    ".team-card",
+    ".team-day-cta",
+    ".about-cta-inner",
+    ".day-hero-copy",
+    ".day-hero-photo",
+    ".day-proof span",
+    ".day-gallery-heading",
+    ".day-card",
+  ].join(",")
+);
+
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+if (revealTargets.length && !reducedMotion && "IntersectionObserver" in window) {
+  revealTargets.forEach((element, index) => {
+    element.classList.add("reveal-on-scroll");
+    element.style.setProperty("--reveal-delay", `${Math.min(index % 6, 5) * 55}ms`);
+  });
+
+  const revealObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
+
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    },
+    {
+      rootMargin: "0px 0px -12% 0px",
+      threshold: 0.12,
+    }
+  );
+
+  revealTargets.forEach((element) => revealObserver.observe(element));
+} else {
+  revealTargets.forEach((element) => element.classList.add("is-visible"));
+}
